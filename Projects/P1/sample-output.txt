@@ -1,0 +1,51 @@
+OUTPUT FROM FLINTSTONE CLASSIC BAM-BAM BASH-IT APPROACH:
+
+V B R P
+W W L J
+G F R I
+Z I D U
+
+And we're off!
+Running with cleverness  OFF
+All done
+
+Searched total of 12029640 moves in 89.482 seconds
+
+Words found:
+2 -letter words:  ID, IF, LI
+3 -letter words:  FIR, RIG, GID, FIZ, DUI, URD, DIF, RID, FIG, DIG, RIF, LID, FID, ZIG
+4 -letter words:  DIRL, GIRL, FRIZ, FRIG, GIRD, IRID, FLIR, LIRI
+
+Found  25  words in total.
+Alpha-sorted list words:
+['DIF', 'DIG', 'DIRL', 'DUI', 'FID', 'FIG', 'FIR', 'FIZ', 'FLIR', 'FRIG', 'FRIZ', 'GID', 'GIRD', 'GIRL', 'ID', 'IF', 'IRID', 'LI', 'LID', 'LIRI', 'RID', 'RIF', 'RIG', 'URD', 'ZIG']
+
+Process finished with exit code 0
+
+
+
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+OUTPUT FROM NOT-QUITE-SO-NEANDERTHAL APPROACH.  Check out those stats!
+
+V B R P
+W W L J
+G F R I
+Z I D U
+
+And we're off!
+Running with cleverness  ON
+All done
+
+Searched total of 630 moves in  0.002 seconds
+
+Words found:
+2 -letter words:  ID, LI, IF
+3 -letter words:  URD, RIG, GID, RIF, FID, FIR, RID, ZIG, LID, DIF, DIG, DUI, FIG, FIZ
+4 -letter words:  FRIG, FLIR, GIRL, DIRL, LIRI, GIRD, IRID, FRIZ
+
+Found  25  words in total.
+Alpha-sorted list words:
+['DIF', 'DIG', 'DIRL', 'DUI', 'FID', 'FIG', 'FIR', 'FIZ', 'FLIR', 'FRIG', 'FRIZ', 'GID', 'GIRD', 'GIRL', 'ID', 'IF', 'IRID', 'LI', 'LID', 'LIRI', 'RID', 'RIF', 'RIG', 'URD', 'ZIG']
+
+Process finished with exit code 0
