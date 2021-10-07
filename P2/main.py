@@ -4,11 +4,20 @@ import numpy
 import graphmaker
 import graphviz
 import matplotlib
-
+from collections import deque
 
 class Searcher:
+    global graph, search
+    graph = []
+    search = ""
+
     def __init__(self, file, search, h):
-        self.file = self.loadfile(file)
+        self.file = file
+        self.search = search
+        with open(file) as f:
+            for line in f:
+                graph.append(tuple(line.rstrip().split()))  # rstrip() removes line breaks
+        print(graph)
         if search == "BREADTH":
             self.search = "BREADTH"
         elif search == "DEPTH":
@@ -19,89 +28,90 @@ class Searcher:
             self.search = "A*"
 
         self.h = None
-
-    def loadfile(self, fname):
-        map = []
-        with open(fname) as f:
-            content = f.readlines()
-            content = [x.strip() for x in content]
-            for line in content:
-                map.append(line.split())
-        print("Content as List of Lists: \n")
-        print(map)
-        '''
+    def getG(self):
         print()
+        self = graph
+        return self
+
+    def getL(self):
         print()
-        print("Content as Dictionary: \n")
-        res = dict()
-        for sub in map:
-            res[tuple(sub[:2])] = tuple(sub[2:])
-        print(res)
-        return res
-        '''
-        return map
+        self = search
+        return self
 
 
-graph = Searcher.loadfile
+
+
+
+class Node:
+    def __init__(self, val):
+        self.val = val
+        self.edges = []
+
+    def __eq__(self, other):
+        return self.val == other.val
+
+    def __hash__(self):
+        return self.val
+
+
 
 
 class SearchNode:
-    global graph
-
-    def __init__(self, label, value):
-        self.label = None
-        self.value = 0
-        print(self.label)
-        print(self.value)
+    def __init__(self, label):
+        self.nodes = Searcher.getG(self)
+        self.label = Searcher.getL(self)
+        print("Here is init of SearchNode --> self.nodes")
+        print(self.nodes)
+        print()
 
     def setStartGoal(self, start, end):
-        self.start = start.make
+        self.start = start
         self.end = end
         print("Start Node Set To : ", start)
         print("End Node Set To : ", end)
 
-    # def showOpen(self):
-    # print tuple of lable and value
+    def showOpen(self):
+        return
 
-    def breadth_first_search(self, graph):
-        graph = graph
-        print(graph)
+    def bfs(self, start, end):
+        self.graph = Searcher.getG(self)
+        if not self.nodes:
+            return []
+        visited, queue, result = set([start]), deque([start]), []
+        while queue:
+            try:
+                queue = []
+                # push the first path into the queue
+                queue.append([start])
+                while queue:
+                    # get the first path from the queue
+                    path = queue.pop(0)
+                    # get the last node from the path
+                    node = path[-1]
+                    # path found
+                    if node == end:
+                        return path
+                    # enumerate all adjacent nodes, construct a
+                    # new path and push it into the queue
+                    for i in graph[path]:
+                        if visited[i] == False:
+                            queue.append(i)
+                            visited[i] = True
+            except ValueError:
+                pass
+        print(queue)
+        return queue
 
 
 
-'''
-Function: loadfile()
-The foal here is to take in ANY file and convert it to a list of lists.
-After this i then parse the values to generate a dictionary. 
 
-EX)
-[["('C',", "'I',", '67,', '[138,', '1],', '[131,', '80])']
 
-turns into
 
-{("('C',", "'I',"): ('67,', '[138,', '1],', '[131,', '80])')
-
-def loadfile(fname):
-    map = []
-    with open (fname) as f:
-        content=f.readlines()
-        content=[x.strip() for x in content]
-        for line in content:
-            map.append(line.split())
-    print("Content as List of Lists: \n")
-    print(map)
-    print()
-    print()
-    print("Content as Dictionary: \n")
-    res = dict()
-    for sub in map:
-        res[tuple(sub[:2])] = tuple(sub[2:])
-    print(res)
-    return res
-'''
-# Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    s = Searcher(file='tenNode.txt', search='BREADTH', h=0)
-    sn = SearchNode(label="BREADTH", value=0)
+    s = Searcher(file='tenNode.txt', search='BREADTH', h=None)
+    g = Searcher.getG(self=Searcher)
+    sn = SearchNode(label=s)
     sn.setStartGoal("A", "B")
-    sn.breadth_first_search(graph)
+    sn.bfs(start="C", end="D")
+
+
